@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db.changelog-init.yaml
+      relativeToChangeLogFile: true
+  - include:
+      file: db.changelog-insert-default-users.yaml
+      relativeToChangeLogFile: true

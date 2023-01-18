@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-role-table
+      author: yurii.milenin
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: person_id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: roles
+  - changeSet:
+      id: create-user-table
+      author: yurii.milenin
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created
+                  type: TIMESTAMP
+                  defaultValue: NOW
+              - column:
+                  constraints:
+                    nullable: false
+                  name: updated
+                  type: TIMESTAMP
+                  defaultValue: NOW
+            schemaName: public
+            tableName: user
+  - changeSet:
+      id: 3
+      author: yurii.milenin
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: person_id
+            baseTableName: roles
+            baseTableSchemaName: public
+            constraintName: fk_roles_on_user
+            referencedColumnNames: id
+            referencedTableName: user
+            referencedTableSchemaName: public

@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users
+      author: yurii.milenin
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: email
+                  value: admin@admin.com
+              - column:
+                  name: password
+                  value: $2a$12$CU3F4CKADTzx3FKljRpPB.9moZ4q951CSjjrkJCpgkJDV1Loo/ocy
+              - column:
+                  name: first_name
+                  value: Admin
+              - column:
+                  name: last_name
+                  value: Admin
+            schemaName: public
+            tableName: user
+  - changeSet:
+      id: insert-roles
+      author: yurii.milenin
+      changes:
+        - insert:
+            columns:
+              - column:
+                  name: person_id
+                  value: 1
+              - column:
+                  name: name
+                  value: ADMIN
+            schemaName: public
+            tableName: roles
